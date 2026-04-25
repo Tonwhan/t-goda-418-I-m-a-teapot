@@ -54,7 +54,7 @@ export function TrendingDestinations() {
             Handpicked favorites for your next adventure
           </p>
         </div>
-        <p className="text-blue-600 font-semibold hover:text-blue-700 cursor-pointer">
+        <p className="text-blue-600 font-semibold hover:text-blue-700">
           View all
         </p>
       </div>

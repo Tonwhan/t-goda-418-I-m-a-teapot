@@ -17,19 +17,18 @@ export function MainNavbar() {
         if (!path) return;
         router.push(path);
     };
-
     return (
         <div className="sticky top-0 z-50 w-full bg-white shadow-sm">
             <nav className="flex justify-center h-[64px] w-full">
                 <div
                     className="w-full max-w-[1280px] h-[64px] flex items-center px-6 text-sm border-b border-b-foreground/10">
                     <div className="flex items-center gap-8 flex-1">
-          <span
-              className="font-black text-[24px] text-[#2563EB] cursor-pointer"
-              onClick={() => handleNavigation("/")}
-          >
-            T-Goda
-          </span>
+            <span
+                className="font-black text-[24px] text-[#2563EB] cursor-pointer"
+                onClick={() => handleNavigation("/")}
+            >
+              T-Goda
+            </span>
                         <nav>
                             <ul className="flex gap-6 text-sm font-semibold items-center">
                                 {navbarItems.map((item, index) => {
