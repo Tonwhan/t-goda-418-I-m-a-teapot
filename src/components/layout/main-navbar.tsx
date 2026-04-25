@@ -1,25 +1,72 @@
-'use client'
-import {Show, SignInButton, SignUpButton, UserButton} from "@clerk/nextjs"
+"use client";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import { useRouter, usePathname } from "next/navigation";
+
+const navbarItems = [
+  { label: "Hotels", path: "/" },
+  { label: "Flights", path: "/flights" },
+  { label: "Bundles", path: "/bundles" },
+  { label: "Activities", path: "/activities" },
+];
 
 export function MainNavbar() {
-    return (
-        <nav className="flex justify-center border-b border-b-foreground/10 h-16.25 w-7xl px-6">
-            <div className="w-full max-w-4xl flex justify-between items-center p-3 px-5 text-sm">
-                <header className="flex justify-end items-center p-4 gap-4 h-16">
-                    <Show when="signed-out">
-                        <SignInButton/>
-                        <SignUpButton>
-                            <button
-                                className="bg-[#005CBD] text-white rounded-[8px] font-medium text-sm sm:text-base h-9 sm:h-12 px-4 sm:px-5 py-8 sm:py-8 cursor-pointer w-[138.56px]">
-                                Sign Up
-                            </button>
-                        </SignUpButton>
-                    </Show>
-                    <Show when="signed-in">
-                        <UserButton/>
-                    </Show>
-                </header>
-            </div>
-        </nav>
-    )
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleNavigation = (path: string) => {
+    if (!path) return;
+    router.push(path);
+  };
+
+  return (
+    <nav className="flex justify-center h-[64px] w-full">
+      <div className="w-full max-w-[1280px] h-[64px] flex items-center px-6 text-sm border-b border-b-foreground/10">
+        <div className="flex items-center gap-8 flex-1">
+          <span
+            className="font-black text-[24px] text-[#2563EB] cursor-pointer"
+            onClick={() => handleNavigation("/")}
+          >
+            T-Goda
+          </span>
+          <nav>
+            <ul className="flex gap-6 text-sm font-semibold items-center">
+              {navbarItems.map((item, index) => {
+                const isActive = pathname === item.path;
+                return (
+                  <li
+                    key={index}
+                    onClick={() => handleNavigation(item.path)}
+                    className={`cursor-pointer transition-all duration-200 ease-in-out border-b-2 ${
+                      isActive
+                        ? "text-[#2563EB] border-[#2563EB] py-[6px]"
+                        : "text-foreground/70 hover:text-[#2563EB] border-transparent py-[6px]"
+                    }`}
+                  >
+                    {item.label}
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </div>
+        <header className="flex justify-end items-center gap-4 h-16">
+          <Show when="signed-out">
+            <SignInButton>
+              <button className="cursor-pointer text-sm font-semibold text-[#475569]">
+                Sign In
+              </button>
+            </SignInButton>
+            <SignUpButton>
+              <button className="bg-[#005CBD] text-white rounded-[8px] font-semibold text-sm sm:text-sm cursor-pointer transition-colors w-[138.58px] h-[36px] whitespace-nowrap flex items-center justify-center px-4 py-2">
+                Create Account
+              </button>
+            </SignUpButton>
+          </Show>
+          <Show when="signed-in">
+            <UserButton />
+          </Show>
+        </header>
+      </div>
+    </nav>
+  );
 }
