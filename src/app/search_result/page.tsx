@@ -46,7 +46,7 @@ const Button = ({
   return (
     <button 
       className={cn(
-        "px-4 py-2 rounded-md font-medium transition-all active:scale-95 disabled:opacity-50", 
+        "px-4 py-2 rounded-md font-medium   disabled:opacity-50", 
         variants[variant], 
         className
       )}
@@ -70,7 +70,7 @@ const Checkbox = ({ label, count, checked }: { label: string; count?: string | n
   <label className="flex items-center justify-between group cursor-pointer">
     <div className="flex items-center gap-3">
       <div className={cn(
-        "w-4 h-4 rounded border flex items-center justify-center transition-colors",
+        "w-4 h-4 rounded border flex items-center justify-center ",
         checked ? "bg-[#006CE4] border-[#006CE4]" : "border-gray-300 group-hover:border-gray-400"
       )}>
         {checked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
@@ -106,7 +106,7 @@ const HotelCard = ({
   features,
   badge
 }: any) => (
-  <div className="flex bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow group mb-4">
+  <div className="flex bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md group mb-4">
     {/* Image Section */}
     <div className="relative w-72 h-full min-h-[220px]">
       <div className="w-full h-full bg-gray-200 animate-pulse" />
@@ -209,7 +209,7 @@ const FlashDealItem = ({ title, stars, location, discount, price, originalPrice 
         <span className="text-3xl font-black">${price}</span>
         <span className="text-xs text-gray-400 font-normal">/night</span>
       </div>
-      <button className="bg-[#E41D57] text-white text-xs font-bold px-6 py-2 rounded hover:bg-[#c2184a] transition-all transform active:scale-95 shadow-md shadow-pink-100">
+      <button className="bg-[#E41D57] text-white text-xs font-bold px-6 py-2 rounded hover:bg-[#c2184a] transform shadow-md shadow-pink-100">
         Claim
       </button>
     </div>
@@ -321,7 +321,7 @@ export default function SearchResultPage() {
               <div className="w-full h-full opacity-40 mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white px-4 py-2 rounded-lg shadow-xl border border-gray-100 flex items-center gap-2 transform group-hover:scale-105 transition-transform">
+              <div className="bg-white px-4 py-2 rounded-lg shadow-xl border border-gray-100 flex items-center gap-2 transform group-">
                 <MapIcon className="w-5 h-5 text-[#006CE4]" />
                 <span className="text-sm font-bold text-gray-800">View on Map</span>
               </div>
@@ -450,7 +450,7 @@ export default function SearchResultPage() {
 
           {/* Pagination */}
           <div className="mt-12 flex justify-center items-center gap-2">
-            <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-400 hover:border-blue-300 hover:text-[#006CE4] transition-colors">
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-400 hover:border-blue-300 hover:text-[#006CE4]">
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#006CE4] text-white font-bold">1</button>
@@ -458,7 +458,7 @@ export default function SearchResultPage() {
             <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 font-bold hover:bg-gray-50">3</button>
             <span className="px-2 text-gray-400">...</span>
             <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-600 font-bold hover:bg-gray-50">12</button>
-            <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-400 hover:border-blue-300 hover:text-[#006CE4] transition-colors">
+            <button className="w-10 h-10 flex items-center justify-center rounded-lg border border-gray-200 text-gray-400 hover:border-blue-300 hover:text-[#006CE4]">
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
