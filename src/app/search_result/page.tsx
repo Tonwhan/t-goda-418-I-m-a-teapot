@@ -18,7 +18,8 @@ import {
   Info,
   Map as MapIcon,
   Filter,
-  Check
+  Check,
+  Menu
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
@@ -58,27 +59,24 @@ const Button = ({
   );
 };
 
-const FilterSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="py-4 border-b border-gray-100 last:border-0">
-    <h3 className="text-sm font-bold text-gray-800 mb-3">{title}</h3>
-    <div className="space-y-2.5">
+const FilterSection = ({ title, children, className }: { title: string; children: React.ReactNode; className?: string }) => (
+  <div className={cn("py-5 border-b border-gray-100 last:border-0", className)}>
+    <h3 className="text-sm font-black text-gray-800 mb-4">{title}</h3>
+    <div className="space-y-3.5">
       {children}
     </div>
   </div>
 );
 
-const Checkbox = ({ label, count, checked }: { label: string; count?: string | number; checked?: boolean }) => (
-  <label className="flex items-center justify-between group cursor-pointer">
-    <div className="flex items-center gap-3">
-      <div className={cn(
-        "w-4 h-4 rounded border flex items-center justify-center transition-colors",
-        checked ? "bg-[#006CE4] border-[#006CE4]" : "border-gray-300 group-hover:border-gray-400"
-      )}>
-        {checked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
-      </div>
-      <span className="text-sm text-gray-600 group-hover:text-gray-900">{label}</span>
+const Checkbox = ({ label, checked }: { label: string; checked?: boolean }) => (
+  <label className="flex items-center gap-3 group cursor-pointer w-full">
+    <div className={cn(
+      "w-5 h-5 rounded border-2 flex items-center justify-center transition-all",
+      checked ? "bg-[#006CE4] border-[#006CE4]" : "border-gray-200 group-hover:border-[#006CE4]"
+    )}>
+      {checked && <Check className="w-3.5 h-3.5 text-white" strokeWidth={4} />}
     </div>
-    {count !== undefined && <span className="text-xs text-gray-400">{count}</span>}
+    <span className="text-sm font-medium text-gray-600 group-hover:text-[#006CE4] transition-colors">{label}</span>
   </label>
 );
 
@@ -108,9 +106,9 @@ const HotelCard = ({
   badge,
   image
 }: any) => (
-  <div className="flex bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow group mb-4">
+  <div className="flex bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow group mb-4 items-stretch h-[240px]">
     {/* Image Section */}
-    <div className="relative w-72 h-full min-h-[220px]">
+    <div className="relative w-64 flex-shrink-0">
       <Image
         src={image}
         alt={title}
@@ -131,41 +129,43 @@ const HotelCard = ({
     </div>
 
     {/* Content Section */}
-    <div className="flex-1 p-5 flex flex-col">
-      <div className="flex justify-between items-start">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <h3 className="text-lg font-bold text-[#006CE4] group-hover:underline cursor-pointer">{title}</h3>
-            <RatingStars count={stars} />
+    <div className="flex-1 p-5 flex flex-col justify-between">
+      <div>
+        <div className="flex justify-between items-start">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <h3 className="text-lg font-bold text-[#006CE4] group-hover:underline cursor-pointer">{title}</h3>
+              <RatingStars count={stars} />
+            </div>
+            <p className="text-sm text-gray-500 mb-2 flex items-center gap-1">
+              <MapPin className="w-3 h-3" />
+              {location} • <span className="text-[#006CE4]">{distance}</span>
+            </p>
           </div>
-          <p className="text-sm text-gray-500 mb-2 flex items-center gap-1">
-            <MapPin className="w-3 h-3" />
-            {location} • <span className="text-[#006CE4]">{distance}</span>
-          </p>
+          <div className="text-right">
+            <div className="flex items-center gap-2 justify-end">
+              <div className="flex flex-col items-end leading-none">
+                <span className="font-bold text-gray-800">{ratingText}</span>
+                <span className="text-xs text-gray-400">{reviews} reviews</span>
+              </div>
+              <div className="bg-[#003580] text-white w-9 h-9 flex items-center justify-center rounded-lg font-bold">
+                {rating}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="text-right">
-          <div className="flex items-center gap-2 justify-end">
-            <div className="flex flex-col items-end leading-none">
-              <span className="font-bold text-gray-800">{ratingText}</span>
-              <span className="text-xs text-gray-400">{reviews} reviews</span>
+
+        <div className="flex gap-4 mt-2">
+          {features.map((f: any, i: number) => (
+            <div key={i} className="flex items-center gap-1.5 text-xs text-gray-600 bg-gray-50 px-2 py-1 rounded border border-gray-100">
+              {f.icon}
+              {f.label}
             </div>
-            <div className="bg-[#003580] text-white w-9 h-9 flex items-center justify-center rounded-lg font-bold">
-              {rating}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      <div className="flex gap-4 mt-2">
-        {features.map((f: any, i: number) => (
-          <div key={i} className="flex items-center gap-1.5 text-xs text-gray-600 bg-gray-50 px-2 py-1 rounded border border-gray-100">
-            {f.icon}
-            {f.label}
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-auto pt-4 flex justify-between items-end border-t border-gray-50">
+      <div className="pt-4 flex justify-between items-end border-t border-gray-50">
         <div className="text-xs text-green-600 font-medium flex items-center gap-1">
         </div>
         <div className="flex flex-col items-end">
@@ -232,7 +232,7 @@ export default function SearchResultPage() {
   return (
     <div className="min-h-screen bg-[#F5F7F9] font-sans antialiased text-gray-900">
       {/* Search Header Bar */}
-      <div className="bg-white border-b border-gray-200 py-4 shadow-sm sticky top-0 z-50">
+      <div className="bg-white border-b border-gray-200 py-4 shadow-sm top-0 z-50">
         <div className="max-w-[1440px] mx-auto px-6">
           <div className="bg-[#f2f2f2] rounded-lg p-1.5 flex items-center gap-2 shadow-inner border border-gray-200">
             <div className="flex-1 flex items-center gap-3 bg-white rounded-md px-4 py-2.5 border border-gray-300">
@@ -274,64 +274,88 @@ export default function SearchResultPage() {
       <div className="max-w-[1440px] mx-auto px-6 py-8 flex gap-8">
         {/* Sidebar Filters */}
         <aside className="w-72 flex-shrink-0 space-y-6">
-          <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
-            <div className="flex items-center justify-between mb-2">
-              <h2 className="text-lg font-bold flex items-center gap-2">
-                <Filter className="w-5 h-5" />
+          <div className="bg-white rounded-2xl border border-gray-200 p-7 shadow-sm">
+            <div className="flex items-center mb-8">
+              <h2 className="text-xl font-black flex items-center gap-3 text-gray-800">
+                <Menu className="w-6 h-6 text-[#006CE4]" />
                 Filters
               </h2>
             </div>
 
-            <FilterSection title="Price Range">
-              <div className="space-y-4 pt-2">
-                <div className="h-1.5 w-full bg-gray-100 rounded-full relative">
-                  <div className="absolute left-[10%] right-[30%] h-full bg-[#006CE4] rounded-full" />
-                  <div className="absolute left-[10%] top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-[#006CE4] rounded-full shadow-sm" />
-                  <div className="absolute right-[30%] top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-[#006CE4] rounded-full shadow-sm" />
-                </div>
-                <div className="flex justify-between text-xs font-bold text-gray-500">
+            <FilterSection title="Price Range" className="pt-0">
+              <div className="space-y-3 pt-1">
+                <div className="flex justify-between text-xs font-black text-gray-400 mb-1">
                   <span>$0</span>
                   <span>$1000+</span>
+                </div>
+                <div className="h-1.5 w-full bg-gray-100 rounded-full relative">
+                  <div className="absolute left-0 right-[40%] h-full bg-[#006CE4] rounded-full" />
+                  <div className="absolute right-[40%] top-1/2 -translate-y-1/2 w-4 h-4 bg-white border-2 border-[#006CE4] rounded-full shadow-sm" />
                 </div>
               </div>
             </FilterSection>
 
             <FilterSection title="Property Type">
-              <Checkbox label="Hotels" count="124" checked />
-              <Checkbox label="Resorts" count="45" />
-              <Checkbox label="Apartments" count="62" />
-              <Checkbox label="Villas" count="14" />
+              <Checkbox label="Hotels" />
+              <Checkbox label="Resorts" />
+              <Checkbox label="Apartments" />
+              <Checkbox label="Villas" />
             </FilterSection>
 
             <FilterSection title="Star Rating">
-              <Checkbox label="5 Stars" count="32" checked />
-              <Checkbox label="4 Stars" count="89" checked />
-              <Checkbox label="3 Stars" count="124" />
+              <div className="space-y-3.5">
+                <label className="flex items-center gap-3 group cursor-pointer w-full">
+                  <div className="w-5 h-5 rounded border-2 border-gray-200 group-hover:border-[#006CE4] transition-all" />
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-[#FFB700] text-[#FFB700]" />)}
+                  </div>
+                </label>
+                <label className="flex items-center gap-3 group cursor-pointer w-full">
+                  <div className="w-5 h-5 rounded border-2 border-gray-200 group-hover:border-[#006CE4] transition-all" />
+                  <div className="flex gap-0.5">
+                    {[...Array(4)].map((_, i) => <Star key={i} className="w-4 h-4 fill-[#FFB700] text-[#FFB700]" />)}
+                    <Star className="w-4 h-4 text-gray-200" />
+                  </div>
+                </label>
+              </div>
             </FilterSection>
 
             <FilterSection title="Facilities">
-              <Checkbox label="Free Wi-Fi" count="210" checked />
-              <Checkbox label="Swimming Pool" count="180" />
-              <Checkbox label="Fitness Center" count="95" />
-              <Checkbox label="Spa" count="42" />
-              <Checkbox label="Parking" count="156" />
-              <Checkbox label="Pet Friendly" count="24" />
+              <Checkbox label="Free Wi-Fi" />
+              <Checkbox label="Swimming Pool" />
+              <Checkbox label="Fitness Center" />
+              <Checkbox label="Spa" />
+              <Checkbox label="Parking" />
+              <Checkbox label="Pet Friendly" />
             </FilterSection>
 
             <FilterSection title="Review Score">
-              <Checkbox label="Superb 9+" count="15" />
-              <Checkbox label="Very Good 8+" count="42" />
-              <Checkbox label="Good 7+" count="89" />
+              <Checkbox label="Superb 9+" />
+              <Checkbox label="Very Good 8+" />
+              <Checkbox label="Good 7+" />
+            </FilterSection>
+
+            <FilterSection title="Neighborhood">
+              <Checkbox label="Patong" />
+              <Checkbox label="Karon" />
+              <Checkbox label="Kata" />
+              <Checkbox label="Kamala" />
+            </FilterSection>
+
+            <FilterSection title="Bed Type">
+              <Checkbox label="Single" />
+              <Checkbox label="Double" />
+              <Checkbox label="King" />
             </FilterSection>
           </div>
 
           {/* Map Widget */}
           <div className="relative rounded-xl overflow-hidden border border-gray-200 shadow-sm aspect-square bg-[#E8F1F8] group cursor-pointer">
-            <Image 
-              src="/search-result/world.png" 
-              alt="Map View" 
-              fill 
-              className="object-contain p-2" 
+            <Image
+              src="/search-result/world.png"
+              alt="Map View"
+              fill
+              className="object-contain p-2"
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="bg-white px-4 py-2 rounded-lg shadow-xl border border-gray-100 flex items-center gap-2 transform group-hover:scale-105 transition-transform">
