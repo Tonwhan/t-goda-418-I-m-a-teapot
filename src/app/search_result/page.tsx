@@ -9,11 +9,11 @@ import { HotelResultsList } from '@/components/search-results/hotel-results-list
 
 export default function SearchResultPage() {
     return (
-        <div className="bg-[#F5F7F9] font-sans antialiased text-gray-900">
+        <div className="bg-[#F5F7F9] font-sans antialiased text-gray-900 pt-16">
             <SearchHeaderBar />
-            <div className="max-w-[1280px] mx-auto px-6 py-8 flex gap-8">
+            <div className="max-w-[1280px] mx-auto px-6 pt-8 pb-[225.41px] flex gap-8">
                 <SearchSidebar />
-                <main className="flex-1">
+                <main className="flex-1 min-h-[2060px]">
                     <div className="flex items-center justify-between mb-6">
                         <h1 className="text-2xl text-gray-800">
                             245 properties in Bali

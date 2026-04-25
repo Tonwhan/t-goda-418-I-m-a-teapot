@@ -29,13 +29,13 @@ const HotelCard = ({
         className="object-cover group-hover:scale-105 transition-transform duration-500"
       />
       {isTopChoice && (
-        <div className="absolute top-3 left-3 flex items-center gap-1 bg-[#006CE4] text-white px-2 py-1 rounded-sm text-[10px] font-bold">
+        <div className="absolute top-3 left-3 flex items-center gap-1 bg-[#006CE4] text-white px-2 py-1 rounded-sm text-[10px] font-normal">
           <Star className="w-3 h-3 fill-white" />
           TOP CHOICE
         </div>
       )}
       {badge && (
-        <div className="absolute top-3 left-3 bg-[#E41D57] text-white px-2 py-1 rounded-sm text-[10px] font-bold">
+        <div className="absolute top-3 left-3 bg-[#E41D57] text-white px-2 py-1 rounded-sm text-[10px] font-normal">
           {badge}
         </div>
       )}
@@ -47,7 +47,7 @@ const HotelCard = ({
         <div className="flex justify-between items-start">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <Link href="/room_details" className="text-lg font-bold text-[#006CE4] hover:underline cursor-pointer">{title}</Link>
+              <Link href="/room_details" className="text-lg font-normal text-[#006CE4] hover:underline cursor-pointer">{title}</Link>
               <RatingStars count={stars} />
             </div>
             <p className="text-sm text-gray-500 mb-2 flex items-center gap-1">
@@ -58,10 +58,10 @@ const HotelCard = ({
           <div className="text-right">
             <div className="flex items-center gap-2 justify-end">
               <div className="flex flex-col items-end leading-none">
-                <span className="font-bold text-gray-800">{ratingText}</span>
+                <span className="font-normal text-gray-800">{ratingText}</span>
                 <span className="text-xs text-gray-400">{reviews} reviews</span>
               </div>
-              <div className="bg-[#003580] text-white w-9 h-9 flex items-center justify-center rounded-lg font-bold">
+              <div className="bg-[#003580] text-white w-9 h-9 flex items-center justify-center rounded-lg font-normal">
                 {rating}
               </div>
             </div>
@@ -84,7 +84,7 @@ const HotelCard = ({
         <div className="flex flex-col items-end">
           {originalPrice && <span className="text-xs text-gray-400 line-through">${originalPrice}</span>}
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-bold text-gray-900">${price}</span>
+            <span className="text-2xl font-normal text-gray-900">${price}</span>
             <span className="text-xs text-gray-500">/night</span>
           </div>
           <Link href="/room_details">

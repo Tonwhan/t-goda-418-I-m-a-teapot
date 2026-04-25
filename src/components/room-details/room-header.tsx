@@ -10,9 +10,9 @@ export function RoomHeader() {
             <nav className="flex items-center gap-2 text-base font-normal text-neutral-500 leading-6">
                 <Link href="/" className="hover:text-[#006CE4] transition-colors">Home</Link>
                 <ChevronRight className="w-4 h-4 text-neutral-400" />
-                <span>Greece</span>
+                <Link href="/search_result" className="hover:text-[#006CE4] transition-colors">Greece</Link>
                 <ChevronRight className="w-4 h-4 text-neutral-400" />
-                <span>Crete Hotels</span>
+                <Link href="/search_result" className="hover:text-[#006CE4] transition-colors">Crete Hotels</Link>
                 <ChevronRight className="w-4 h-4 text-neutral-400" />
                 <span className="text-black font-semibold">Grand Azure Resort & Spa</span>
             </nav>

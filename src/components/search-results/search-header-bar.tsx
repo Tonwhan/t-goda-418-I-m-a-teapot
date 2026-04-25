@@ -4,39 +4,38 @@ import { Button } from '@/components/shared/ui-components';
 
 export function SearchHeaderBar() {
     return (
-      <div className="bg-white border-b border-gray-200 py-4 shadow-sm top-0 z-50 mt-16">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="bg-[#f2f2f2] rounded-lg p-1.5 flex items-center gap-2 shadow-inner border border-gray-200">
-            <div className="flex-1 flex items-center gap-3 bg-white rounded-md px-4 py-2.5 border border-gray-300">
-              <MapPin className="w-5 h-5 text-gray-400" />
+      <div className="max-w-[1280px] mx-auto w-full bg-white border-b border-[#C2C6D54D] pt-4 pb-4 px-6 shadow-[0px_1px_2px_0px_#0000000D] top-0 z-50 flex items-center">
+        <div className="max-w-[1280px] mx-auto w-full">
+          <div className="flex items-center gap-4">
+            <div className="w-[625.85px] min-w-[280px] h-[57.59px] flex items-center gap-3 bg-[#ECEDF6] rounded-[12px] border border-[#C2C6D580] px-4 py-3 transition-all hover:bg-[#E2E8F0] cursor-pointer">
+              <MapPin className="w-5 h-5 text-[#006CE4]" />
               <div className="flex flex-col">
-                <span className="text-[10px] text-gray-400 uppercase font-bold leading-none mb-0.5">Destination</span>
+                <span className="text-[11px] text-gray-500 font-medium leading-none mb-1">Destination</span>
                 <input
                   type="text"
                   defaultValue="Bali, Indonesia"
-                  className="text-sm font-bold text-gray-800 bg-transparent outline-none w-full"
+                  className="text-sm font-bold text-gray-900 bg-transparent outline-none w-full placeholder-gray-400"
                 />
               </div>
             </div>
 
-            <div className="flex-1 flex items-center gap-3 bg-white rounded-md px-4 py-2.5 border border-gray-300">
-              <Calendar className="w-5 h-5 text-gray-400" />
+            <div className="flex-1 h-[57.59px] flex items-center gap-3 bg-[#ECEDF6] rounded-[12px] border border-[#C2C6D580] px-4 py-3 transition-all hover:bg-[#E2E8F0] cursor-pointer">
+              <Calendar className="w-5 h-5 text-[#006CE4]" />
               <div className="flex flex-col">
-                <span className="text-[10px] text-gray-400 uppercase font-bold leading-none mb-0.5">Dates</span>
-                <span className="text-sm font-bold text-gray-800">Oct 12 — Oct 19, 2024</span>
+                <span className="text-[11px] text-gray-500 font-medium leading-none mb-1">Dates</span>
+                <span className="text-sm font-bold text-gray-900 whitespace-nowrap">Oct 12 — Oct 19, 2024</span>
               </div>
             </div>
 
-            <div className="flex-1 flex items-center gap-3 bg-white rounded-md px-4 py-2.5 border border-gray-300">
-              <Users className="w-5 h-5 text-gray-400" />
+            <div className="flex-1 h-[57.59px] flex items-center gap-3 bg-[#ECEDF6] rounded-[12px] border border-[#C2C6D580] px-4 py-3 transition-all hover:bg-[#E2E8F0] cursor-pointer">
+              <Users className="w-5 h-5 text-[#006CE4]" />
               <div className="flex flex-col">
-                <span className="text-[10px] text-gray-400 uppercase font-bold leading-none mb-0.5">Travelers</span>
-                <span className="text-sm font-bold text-gray-800">2 Adults, 1 Room</span>
+                <span className="text-[11px] text-gray-500 font-medium leading-none mb-1">Travelers</span>
+                <span className="text-sm font-bold text-gray-900 whitespace-nowrap">2 Adults, 1 Room</span>
               </div>
             </div>
 
-            <Button className="px-8 h-full py-3.5 rounded-md shadow-lg shadow-blue-200 flex items-center gap-2">
-              <Search className="w-4 h-4" />
+            <Button className="px-10 h-[52px] rounded-xl shadow-lg shadow-blue-100 bg-[#006CE4] hover:bg-[#005bb2] text-white font-bold text-sm transition-all flex items-center justify-center shrink-0">
               Update Search
             </Button>
           </div>

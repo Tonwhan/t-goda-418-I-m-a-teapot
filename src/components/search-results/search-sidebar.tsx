@@ -1,15 +1,15 @@
-import React from 'react';
+import Link from 'next/link';
 import { Menu, Map as MapIcon, Star } from 'lucide-react';
 import Image from 'next/image';
 import { FilterSection, Checkbox } from '@/components/shared/ui-components';
 
 export function SearchSidebar() {
     return (
-        <aside className="w-72 flex-shrink-0 space-y-6">
-          <div className="bg-white rounded-2xl border border-gray-200 p-7 shadow-sm">
-            <div className="flex items-center mb-8">
-              <h2 className="text-xl font-black flex items-center gap-3 text-gray-800">
-                <Menu className="w-6 h-6 text-[#006CE4]" />
+        <aside className="w-[256px] flex-shrink-0 flex flex-col gap-[15px]">
+          <div className="bg-white rounded-[12px] border border-[#C2C6D533] pt-[15.5px] pr-[16px] pb-[32px] pl-[16px] shadow-[0px_4px_12px_0px_#0000000D]">
+            <div className="flex items-center mb-6">
+              <h2 className="text-lg font-black flex items-center gap-3 text-gray-800">
+                <Menu className="w-5 h-5 text-[#006CE4]" />
                 Filters
               </h2>
             </div>
@@ -80,7 +80,7 @@ export function SearchSidebar() {
           </div>
 
           {/* Map Widget */}
-          <div className="relative w-[256px] h-[160px] rounded-[12px] overflow-hidden border border-gray-200 shadow-sm bg-[#E8F1F8] group cursor-pointer">
+          <Link href="/room_details" className="relative w-[256px] h-[160px] rounded-[12px] overflow-hidden border border-gray-200 shadow-sm bg-[#E8F1F8] group cursor-pointer block">
             <Image
               src="/search-result/world.png"
               alt="Map View"
@@ -88,12 +88,12 @@ export function SearchSidebar() {
               className="object-cover"
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white px-4 py-2 rounded-lg shadow-xl border border-gray-100 flex items-center gap-2 transform group-">
+              <div className="bg-white px-4 py-2 rounded-lg shadow-xl border border-gray-100 flex items-center gap-2 transition-transform group-hover:scale-105">
                 <MapIcon className="w-5 h-5 text-[#006CE4]" />
                 <span className="text-sm font-bold text-gray-800">View on Map</span>
               </div>
             </div>
-          </div>
+          </Link>
         </aside>
     );
 }
