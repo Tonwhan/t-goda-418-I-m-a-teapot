@@ -19,55 +19,57 @@ export function MainNavbar() {
     };
 
     return (
-        <nav className="flex justify-center h-[64px] w-full">
-            <div
-                className="w-full max-w-[1280px] h-[64px] flex items-center px-6 text-sm border-b border-b-foreground/10">
-                <div className="flex items-center gap-8 flex-1">
- <span
-     className="font-black text-[24px] text-[#2563EB] cursor-pointer"
-     onClick={() => handleNavigation("/")}
- >
- T-Goda
- </span>
-                    <nav>
-                        <ul className="flex gap-6 text-sm font-semibold items-center">
-                            {navbarItems.map((item, index) => {
-                                const isActive = pathname === item.path;
-                                return (
-                                    <li
-                                        key={index}
-                                        className={`cursor-default border-b-2 ${
-                                            isActive
-                                                ? "text-[#2563EB] border-[#2563EB] py-[6px]"
-                                                : "text-foreground/70 border-transparent py-[6px]"
-                                        }`}
-                                    >
-                                        {item.label}
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </nav>
+        <div className="sticky top-0 z-50 w-full bg-white shadow-sm">
+            <nav className="flex justify-center h-[64px] w-full">
+                <div
+                    className="w-full max-w-[1280px] h-[64px] flex items-center px-6 text-sm border-b border-b-foreground/10">
+                    <div className="flex items-center gap-8 flex-1">
+          <span
+              className="font-black text-[24px] text-[#2563EB] cursor-pointer"
+              onClick={() => handleNavigation("/")}
+          >
+            T-Goda
+          </span>
+                        <nav>
+                            <ul className="flex gap-6 text-sm font-semibold items-center">
+                                {navbarItems.map((item, index) => {
+                                    const isActive = pathname === item.path;
+                                    return (
+                                        <li
+                                            key={index}
+                                            className={`cursor-default border-b-2 ${
+                                                isActive
+                                                    ? "text-[#2563EB] border-[#2563EB] py-[6px]"
+                                                    : "text-foreground/70 border-transparent py-[6px]"
+                                            }`}
+                                        >
+                                            {item.label}
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </nav>
+                    </div>
+                    <header className="flex justify-end items-center gap-4 h-16">
+                        <Show when="signed-out">
+                            <SignInButton>
+                                <button className="cursor-pointer text-sm font-semibold text-[#475569]">
+                                    Sign In
+                                </button>
+                            </SignInButton>
+                            <SignUpButton>
+                                <button
+                                    className="bg-[#005CBD] text-white rounded-[8px] font-semibold text-sm sm:text-sm cursor-pointer w-[138.58px] h-[36px] whitespace-nowrap flex items-center justify-center px-4 py-2">
+                                    Create Account
+                                </button>
+                            </SignUpButton>
+                        </Show>
+                        <Show when="signed-in">
+                            <UserButton/>
+                        </Show>
+                    </header>
                 </div>
-                <header className="flex justify-end items-center gap-4 h-16">
-                    <Show when="signed-out">
-                        <SignInButton>
-                            <button className="cursor-pointer text-sm font-semibold text-[#475569]">
-                                Sign In
-                            </button>
-                        </SignInButton>
-                        <SignUpButton>
-                            <button
-                                className="bg-[#005CBD] text-white rounded-[8px] font-semibold text-sm sm:text-sm cursor-pointer w-[138.58px] h-[36px] whitespace-nowrap flex items-center justify-center px-4 py-2">
-                                Create Account
-                            </button>
-                        </SignUpButton>
-                    </Show>
-                    <Show when="signed-in">
-                        <UserButton/>
-                    </Show>
-                </header>
-            </div>
-        </nav>
+            </nav>
+        </div>
     );
 }
