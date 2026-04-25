@@ -35,11 +35,10 @@ export function MainNavbar() {
                 return (
                   <li
                     key={index}
-                    className={`cursor-default border-b-2 ${
-                      isActive
+                    className={`cursor-default border-b-2 ${isActive
                         ? "text-[#2563EB] border-[#2563EB] py-[6px]"
                         : "text-foreground/70 border-transparent py-[6px]"
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </li>
