@@ -25,18 +25,21 @@ export function MainFooter() {
                                 width={20}
                                 height={20}
                                 alt="Facebook"
+                                priority
                             />
                             <Image
                                 src="/main-vectors/ig.svg"
                                 width={20}
                                 height={20}
                                 alt="Instagram"
+                                priority
                             />
                             <Image
                                 src="/main-vectors/twitter.svg"
                                 width={20}
                                 height={20}
                                 alt="Twitter"
+                                priority
                             />
                         </div>
                     </div>

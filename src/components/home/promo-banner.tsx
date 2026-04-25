@@ -4,7 +4,6 @@ export function PromoBanner() {
     return (
         <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             <div className="bg-[#b91c49] rounded-[24px] overflow-hidden relative flex flex-col md:flex-row items-center">
-                {/* Background Tag Icon */}
                 <div className="absolute top-1/2 left-[45%] transform -translate-y-[240px] pointer-events-none z-0">
                     <Image
                         src="/main-vectors/tag.svg"
@@ -42,6 +41,7 @@ export function PromoBanner() {
                             width={400}
                             height={400}
                             className="object-cover w-[360px] h-[360px] lg:w-[400px] lg:h-[400px]"
+                            priority
                         />
                     </div>
                 </div>
