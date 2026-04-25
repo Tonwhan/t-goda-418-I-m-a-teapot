@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a33adf2-a47c-4665-ac28-309f579ca524" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/main-vectors/calendar-search.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/main-vectors/calendar.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/main-vectors/facebook.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/main-vectors/ig.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/main-vectors/support.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/main-vectors/twitter.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/main-vectors/world.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(main)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(main)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(auth)/sign-up/[[...sign-up]]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/search_result/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/search_result/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/main-navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/main-navbar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="22" />
+    <option name="cachedIndexableFilesCount" value="167" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -55,6 +43,7 @@
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
@@ -110,6 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1777084701784</updated>
       <workItem from="1777084702825" duration="2508000" />
+      <workItem from="1777099987181" duration="641000" />
     </task>
     <servers />
   </component>
