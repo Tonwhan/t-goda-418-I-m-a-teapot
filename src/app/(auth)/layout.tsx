@@ -1,14 +1,12 @@
 import React from "react";
 import {MainNavbar} from "@/components/layout/main-navbar";
-
-interface MainLayoutProps {
+interface AuthLayoutProps {
     children: React.ReactNode;
 }
 
-export default function MainLayout({children}: MainLayoutProps) {
+export default function AuthLayout({children}: AuthLayoutProps) {
     return (
         <div className="flex flex-col items-center justify-center w-full">
-            <MainNavbar/>
             <main className="flex w-full flex-col items-center justify-between">
                 {children}
             </main>
