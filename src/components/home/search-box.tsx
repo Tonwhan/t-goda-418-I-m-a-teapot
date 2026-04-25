@@ -27,7 +27,7 @@ export function SearchBox() {
     <div className="w-full max-w-4xl mt-12 bg-white p-2 md:p-3 rounded-[16px] shadow-lg flex flex-col md:flex-row items-center gap-2 md:gap-3 relative z-10">
       {/* Destination Input */}
       <div className="flex-1 flex items-center w-full px-4 py-3 bg-[#F1F5F9] border border-[#CBD5E1] rounded-xl focus-within:ring-2 focus-within:ring-[#005CBD]/50 focus-within:border-[#005CBD]">
-        <Image src="/main-vectors/world.svg" alt="Destination" width={24} height={24} className="flex-shrink-0" />
+        <Image src="/main-vectors/world.svg" alt="Destination" width={24} height={24} className="flex-shrink-0" priority />
         <input
           type="text"
           value={destination}
@@ -41,7 +41,7 @@ export function SearchBox() {
       <Popover>
         <PopoverTrigger asChild>
           <div className="flex-1 flex items-center w-full px-4 py-3 bg-[#F1F5F9] border border-[#CBD5E1] rounded-xl hover:border-[#005CBD]/50 transition-colors cursor-pointer focus-within:ring-2 focus-within:ring-[#005CBD]/50 focus-within:border-[#005CBD]">
-            <Image src="/main-vectors/calendar-search.svg" alt="Dates" width={24} height={24} className="flex-shrink-0" />
+            <Image src="/main-vectors/calendar-search.svg" alt="Dates" width={24} height={24} className="flex-shrink-0" priority />
             <div className={cn(
               "w-full bg-transparent border-none outline-none px-3 text-left font-medium text-base select-none",
               !date && "text-gray-500",

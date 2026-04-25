@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import Link from "next/link";
 
 const destinations = [
   {
@@ -68,24 +69,28 @@ export function TrendingDestinations() {
               </div>
             ))
           : destinations.map((dest) => (
-              <div
+              <Link
                 key={dest.id}
-                className="group cursor-pointer w-[282px] mx-auto"
+                href="/search_result"
+                className="group cursor-pointer w-[282px] mx-auto block"
               >
                 <div className="relative w-[282px] h-[376px] rounded-[16px] overflow-hidden mb-4">
                   <Image
                     src={dest.image}
                     alt={dest.name}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    priority
                   />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900">{dest.name}</h3>
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {dest.name}
+                </h3>
                 <p className="text-gray-500 text-sm mt-1">
                   Starting from{" "}
                   <span className="text-blue-600 font-bold">${dest.price}</span>
                 </p>
-              </div>
+              </Link>
             ))}
       </div>
     </section>

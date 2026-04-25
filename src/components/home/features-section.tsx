@@ -27,6 +27,7 @@ export function FeaturesSection() {
                             width={24}
                             height={24}
                             alt="Headphones"
+                            priority
                         />
                     </div>
                     <div>
@@ -47,6 +48,7 @@ export function FeaturesSection() {
                             width={24}
                             height={24}
                             alt="Headphones"
+                            priority
                         />{" "}
                     </div>
                     <div>
