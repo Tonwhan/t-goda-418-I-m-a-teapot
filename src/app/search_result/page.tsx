@@ -1,26 +1,27 @@
 'use client';
 
 import React from 'react';
-import { 
-  MapPin, 
-  Calendar, 
-  Users, 
-  Search, 
-  Wifi, 
-  Waves, 
-  Dumbbell, 
-  Sparkles, 
-  Car, 
-  Dog, 
-  Star, 
-  ChevronRight, 
-  ChevronLeft, 
-  Info, 
+import {
+  MapPin,
+  Calendar,
+  Users,
+  Search,
+  Wifi,
+  Waves,
+  Dumbbell,
+  Sparkles,
+  Car,
+  Dog,
+  Star,
+  ChevronRight,
+  ChevronLeft,
+  Info,
   Map as MapIcon,
   Filter,
   Check
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 // --- Components ---
 
@@ -30,11 +31,11 @@ const Badge = ({ children, className }: { children: React.ReactNode; className?:
   </span>
 );
 
-const Button = ({ 
-  children, 
-  variant = 'primary', 
+const Button = ({
+  children,
+  variant = 'primary',
   className,
-  ...props 
+  ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: 'primary' | 'outline' | 'ghost' | 'danger' }) => {
   const variants = {
     primary: "bg-[#006CE4] text-white hover:bg-[#005bb8]",
@@ -44,10 +45,10 @@ const Button = ({
   };
 
   return (
-    <button 
+    <button
       className={cn(
-        "px-4 py-2 rounded-md font-medium transition-all active:scale-95 disabled:opacity-50", 
-        variants[variant], 
+        "px-4 py-2 rounded-md font-medium transition-all active:scale-95 disabled:opacity-50",
+        variants[variant],
         className
       )}
       {...props}
@@ -84,32 +85,38 @@ const Checkbox = ({ label, count, checked }: { label: string; count?: string | n
 const RatingStars = ({ count }: { count: number }) => (
   <div className="flex gap-0.5">
     {[...Array(5)].map((_, i) => (
-      <Star 
-        key={i} 
-        className={cn("w-3 h-3", i < count ? "fill-[#FFB700] text-[#FFB700]" : "text-gray-200")} 
+      <Star
+        key={i}
+        className={cn("w-3 h-3", i < count ? "fill-[#FFB700] text-[#FFB700]" : "text-gray-200")}
       />
     ))}
   </div>
 );
 
-const HotelCard = ({ 
-  title, 
-  stars, 
-  location, 
-  distance, 
-  rating, 
-  ratingText, 
-  reviews, 
-  price, 
+const HotelCard = ({
+  title,
+  stars,
+  location,
+  distance,
+  rating,
+  ratingText,
+  reviews,
+  price,
   originalPrice,
   isTopChoice,
   features,
-  badge
+  badge,
+  image
 }: any) => (
   <div className="flex bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow group mb-4">
     {/* Image Section */}
     <div className="relative w-72 h-full min-h-[220px]">
-      <div className="w-full h-full bg-gray-200 animate-pulse" />
+      <Image
+        src={image}
+        alt={title}
+        fill
+        className="object-cover"
+      />
       {isTopChoice && (
         <div className="absolute top-3 left-3 flex items-center gap-1 bg-[#006CE4] text-white px-2 py-1 rounded-sm text-[10px] font-bold">
           <Star className="w-3 h-3 fill-white" />
@@ -160,8 +167,6 @@ const HotelCard = ({
 
       <div className="mt-auto pt-4 flex justify-between items-end border-t border-gray-50">
         <div className="text-xs text-green-600 font-medium flex items-center gap-1">
-          <Check className="w-3 h-3" />
-          Free cancellation before Oct 10
         </div>
         <div className="flex flex-col items-end">
           {originalPrice && <span className="text-xs text-gray-400 line-through">${originalPrice}</span>}
@@ -176,40 +181,45 @@ const HotelCard = ({
   </div>
 );
 
-const FlashDealItem = ({ title, stars, location, discount, price, originalPrice }: any) => (
-  <div className="flex bg-white items-center p-5 gap-6 group">
-    {/* Image Container - Larger & Rectangular */}
-    <div className="relative w-72 h-44 flex-shrink-0">
-      <div className="w-full h-full bg-gray-200 animate-pulse rounded-lg shadow-sm" />
-      <div className="absolute top-2 left-2 bg-[#E41D57] text-white px-2 py-1 rounded text-[10px] font-bold">
+const FlashDealItem = ({ title, stars, location, discount, price, originalPrice, image }: any) => (
+  <div className="flex bg-white items-stretch group h-52">
+    {/* Image Container - Flush to edges */}
+    <div className="relative w-80 flex-shrink-0 overflow-hidden">
+      <Image
+        src={image}
+        alt={title}
+        fill
+        className="object-cover"
+      />
+      <div className="absolute top-4 left-4 bg-[#E41D57] text-white px-3 py-1.5 rounded shadow-lg text-[10px] font-black tracking-wider">
         {discount} OFF
       </div>
     </div>
 
     {/* Info Section - Middle */}
-    <div className="flex-1 flex flex-col justify-center">
-      <div className="flex items-center gap-2 mb-1">
-        <h4 className="font-bold text-lg text-gray-800">{title}</h4>
+    <div className="flex-1 flex flex-col justify-center px-8">
+      <div className="flex items-center gap-3 mb-1.5">
+        <h4 className="font-bold text-xl text-gray-800">{title}</h4>
         <RatingStars count={stars} />
       </div>
-      <p className="text-xs text-gray-500 flex items-center gap-1">
-        <MapPin className="w-3.5 h-3.5" />
+      <p className="text-sm text-gray-500 flex items-center gap-1.5">
+        <MapPin className="w-4 h-4 text-[#006CE4]" />
         {location}
       </p>
     </div>
 
     {/* Price Section - Far Right */}
-    <div className="flex flex-col items-end gap-1 min-w-[120px]">
+    <div className="flex flex-col items-end justify-center pr-8 gap-1 min-w-[160px]">
       {originalPrice && (
-        <span className="text-xs text-gray-400 line-through leading-none">
+        <span className="text-sm text-gray-400 line-through leading-none">
           ${originalPrice}
         </span>
       )}
       <div className="flex items-baseline gap-1 text-[#E41D57]">
-        <span className="text-3xl font-black">${price}</span>
+        <span className="text-4xl font-black">${price}</span>
         <span className="text-xs text-gray-400 font-normal">/night</span>
       </div>
-      <button className="bg-[#E41D57] text-white text-xs font-bold px-6 py-2 rounded hover:bg-[#c2184a] transition-all transform active:scale-95 shadow-md shadow-pink-100">
+      <button className="mt-2 bg-[#E41D57] text-white text-xs font-black uppercase tracking-widest px-8 py-2.5 rounded shadow-lg shadow-pink-100 hover:bg-[#c2184a] transition-all transform active:scale-95">
         Claim
       </button>
     </div>
@@ -229,14 +239,14 @@ export default function SearchResultPage() {
               <MapPin className="w-5 h-5 text-gray-400" />
               <div className="flex flex-col">
                 <span className="text-[10px] text-gray-400 uppercase font-bold leading-none mb-0.5">Destination</span>
-                <input 
-                  type="text" 
-                  defaultValue="Bali, Indonesia" 
+                <input
+                  type="text"
+                  defaultValue="Bali, Indonesia"
                   className="text-sm font-bold text-gray-800 bg-transparent outline-none w-full"
                 />
               </div>
             </div>
-            
+
             <div className="flex-1 flex items-center gap-3 bg-white rounded-md px-4 py-2.5 border border-gray-300">
               <Calendar className="w-5 h-5 text-gray-400" />
               <div className="flex flex-col">
@@ -271,7 +281,7 @@ export default function SearchResultPage() {
                 Filters
               </h2>
             </div>
-            
+
             <FilterSection title="Price Range">
               <div className="space-y-4 pt-2">
                 <div className="h-1.5 w-full bg-gray-100 rounded-full relative">
@@ -316,10 +326,13 @@ export default function SearchResultPage() {
           </div>
 
           {/* Map Widget */}
-          <div className="relative rounded-xl overflow-hidden border border-gray-200 shadow-sm aspect-square bg-gray-200 group cursor-pointer">
-            <div className="absolute inset-0 bg-blue-100 bg-opacity-50">
-              <div className="w-full h-full opacity-40 mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
-            </div>
+          <div className="relative rounded-xl overflow-hidden border border-gray-200 shadow-sm aspect-square bg-[#E8F1F8] group cursor-pointer">
+            <Image 
+              src="/search-result/world.png" 
+              alt="Map View" 
+              fill 
+              className="object-contain p-2" 
+            />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="bg-white px-4 py-2 rounded-lg shadow-xl border border-gray-100 flex items-center gap-2 transform group-hover:scale-105 transition-transform">
                 <MapIcon className="w-5 h-5 text-[#006CE4]" />
@@ -349,15 +362,13 @@ export default function SearchResultPage() {
             {/* Header Banner */}
             <div className="bg-[#FFF1F3] px-6 py-4 flex items-center justify-between border-b border-[#FFE4E8]">
               <div className="flex items-center gap-3">
-                <div className="bg-[#E41D57] p-1.5 rounded-lg shadow-sm">
-                  <Sparkles className="w-5 h-5 text-white fill-white" />
-                </div>
+                <Image src="/search-result/Icon.svg" alt="Flash Deal Icon" width={20} height={20} />
                 <h2 className="text-xl font-black italic tracking-tight text-[#E41D57]">Flash Deals for You</h2>
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Ends in:</span>
                 <div className="flex gap-1">
-                  {[ '08', '45', '12' ].map((time, i) => (
+                  {['08', '45', '12'].map((time, i) => (
                     <React.Fragment key={i}>
                       <div className="bg-[#E41D57] text-white px-2.5 py-1.5 rounded font-black text-sm tabular-nums shadow-sm">
                         {time}
@@ -371,36 +382,39 @@ export default function SearchResultPage() {
 
             {/* Vertical List of Items */}
             <div className="flex flex-col divide-y divide-gray-100">
-              <FlashDealItem 
-                title="Mandala Sky Luxury Villas" 
-                stars={5} 
-                location="Uluwatu, Bali • Cliff-top view" 
-                discount="60%" 
-                price="480" 
+              <FlashDealItem
+                title="Mandala Sky Luxury Villas"
+                stars={5}
+                location="Uluwatu, Bali • Cliff-top view"
+                discount="60%"
+                price="480"
                 originalPrice="1,200"
+                image="/search-result/Uluwatu luxury villa.png"
               />
-              <FlashDealItem 
-                title="Emerald Jungle Retreat" 
-                stars={4} 
-                location="Ubud, Bali • Private Sanctuary" 
-                discount="45%" 
-                price="247" 
+              <FlashDealItem
+                title="Emerald Jungle Retreat"
+                stars={4}
+                location="Ubud, Bali • Private Sanctuary"
+                discount="45%"
+                price="247"
                 originalPrice="450"
+                image="/search-result/Ubud jungle retreat.png"
               />
-              <FlashDealItem 
-                title="Seminyak Shores Club" 
-                stars={5} 
-                location="Seminyak, Bali • Beachfront Bliss" 
-                discount="35%" 
-                price="442" 
+              <FlashDealItem
+                title="Seminyak Shores Club"
+                stars={5}
+                location="Seminyak, Bali • Beachfront Bliss"
+                discount="35%"
+                price="442"
                 originalPrice="680"
+                image="/search-result/Seminyak beach club resort.png"
               />
             </div>
           </section>
 
           {/* Standard Results */}
           <section className="space-y-4">
-            <HotelCard 
+            <HotelCard
               title="The Azure Serenity Resort"
               stars={5}
               location="Ubud, Bali"
@@ -411,13 +425,14 @@ export default function SearchResultPage() {
               price="284"
               originalPrice="520"
               isTopChoice
+              image="/search-result/The Azure Serenity Resort.png"
               features={[
                 { icon: <Wifi className="w-3 h-3" />, label: 'Free Wi-Fi' },
                 { icon: <Waves className="w-3 h-3" />, label: 'Pool' },
                 { icon: <Sparkles className="w-3 h-3" />, label: 'Breakfast' }
               ]}
             />
-            <HotelCard 
+            <HotelCard
               title="Lumina Beach Villas"
               stars={4}
               location="Seminyak, Bali"
@@ -426,12 +441,13 @@ export default function SearchResultPage() {
               ratingText="Exceptional"
               reviews="850"
               price="415"
+              image="/search-result/Lumina Beach Villas.png"
               features={[
                 { icon: <Sparkles className="w-3 h-3" />, label: 'Private Beach' },
                 { icon: <Waves className="w-3 h-3" />, label: 'Spa' }
               ]}
             />
-            <HotelCard 
+            <HotelCard
               title="The Palms Sanctuary"
               stars={4}
               location="Nusa Dua, Bali"
@@ -441,6 +457,7 @@ export default function SearchResultPage() {
               reviews="2,100"
               price="189"
               badge="Limited Deal"
+              image="/search-result/The Palms Sanctuary.png"
               features={[
                 { icon: <Car className="w-3 h-3" />, label: 'Airport Shuttle' },
                 { icon: <Dumbbell className="w-3 h-3" />, label: 'Gym' }
