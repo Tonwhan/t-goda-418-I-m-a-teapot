@@ -24,7 +24,7 @@ export function SearchBox() {
   };
 
   return (
-    <div className="w-full max-w-4xl mt-12 bg-white p-2 md:p-3 rounded-[16px] shadow-lg flex flex-col md:flex-row items-center gap-2 md:gap-3 relative z-10">
+    <div className="w-full max-w-4xl mt-12 bg-white p-2 md:p-3 rounded-[12px] shadow-lg flex flex-col md:flex-row items-center gap-2 md:gap-3 relative z-10">
       {/* Destination Input */}
       <div className="flex-1 flex items-center w-full px-4 py-3 bg-[#F1F5F9] border border-[#CBD5E1] rounded-xl focus-within:ring-2 focus-within:ring-[#005CBD]/50 focus-within:border-[#005CBD]">
         <Image src="/main-vectors/world.svg" alt="Destination" width={24} height={24} className="flex-shrink-0" priority />
